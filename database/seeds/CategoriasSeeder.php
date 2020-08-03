@@ -25,5 +25,7 @@ class CategoriasSeeder extends Seeder
         $c->descripcion = "cosas de tomar";
         $c->condicion = 0;
         $c->save();
+
+        $cats = factory(Categoria::class,25)->create([]);
     }
 }

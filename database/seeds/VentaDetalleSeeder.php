@@ -2,9 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use App\Articulo;
-
-class ArticuloSeeder extends Seeder
+class VentaDetalleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +11,6 @@ class ArticuloSeeder extends Seeder
      */
     public function run()
     {
-        $articulos = factory(Articulo::class,100)->create([]);
+        //
     }
 }
