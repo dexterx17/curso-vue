@@ -9,11 +9,11 @@
                 @csrf
                 <div class="card-body">
                     <h1>Acceder</h1>
+                    <p class="text-muted">Control de acceso al sistema</p>
+                    <hr>
                     @foreach ($errors->all() as $error)
                         <p class="alert alert-danger">{{$errors->first()}}</span>
                     @endforeach
-                    
-                    <p class="text-muted">Control de acceso al sistema</p>
                     <div class="input-group mb-3 @error('usuario')is-invalid @enderror ">
                         <span class="input-group-addon"><i class="icon-user"></i></span>
                         <input type="text" value="{{ old('usuario') }}" name="usuario" id="usuario" class="form-control" placeholder="Usuario">
