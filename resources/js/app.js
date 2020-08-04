@@ -27,6 +27,9 @@ Vue.component('rol-component', require('./components/Rol.vue').default);
 Vue.component('user-component', require('./components/User.vue').default);
 Vue.component('ingreso-component', require('./components/Ingreso.vue').default);
 Vue.component('venta-component', require('./components/Venta.vue').default);
+Vue.component('dashboard-component', require('./components/Dashboard.vue').default);
+Vue.component('consulta-ingreso-component', require('./components/ConsultaIngreso.vue').default);
+Vue.component('consulta-venta-component', require('./components/ConsultaVenta.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

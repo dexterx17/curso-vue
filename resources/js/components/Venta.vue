@@ -51,6 +51,9 @@
                                             <button type="button" @click="verVenta(venta.id)" class="btn btn-success btn-sm">
                                             <i class="icon-eye"></i>
                                             </button> &nbsp;
+                                            <button type="button" @click="pdfVenta(venta.id)" class="btn btn-info btn-sm">
+                                            <i class="icon-doc"></i>
+                                            </button> &nbsp;
                                             <template v-if="venta.estado=='Registrado'">
                                                 <button type="button" class="btn btn-danger btn-sm" @click="desactivarVenta(venta.id)">
                                                     <i class="icon-trash"></i>
@@ -514,6 +517,9 @@
                     console.log(error);
                 });
             },
+            pdfVenta(val){
+                 window.open('http://vues.ec/venta/pdf/'+val,'_blank');
+            },
             selectCliente(search,loading){
                 let me=this;
                 loading(true)
@@ -686,7 +692,9 @@
                     me.codigo='';
                     me.descuento=0;
                     me.arrayDetalle=[];
-
+                    console.log(response);
+                    alert(response.data.id);
+                    window.open('http://vues.ec/venta/pdf/'+response.data.id,'_blank');
                 }).catch(function (error) {
                     console.log(error);
                 });

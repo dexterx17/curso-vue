@@ -93,6 +93,20 @@ class ArticuloController extends Controller
         return ['articulos' => $articulos];
     }
 
+    public function listarPdf(){
+
+        $articulos = Articulo::join('categorias','articulos.categoria_id','=','categorias.id')
+        ->select('articulos.id','articulos.categoria_id','articulos.codigo','articulos.nombre','categorias.nombre as nombre_categoria','articulos.precio_venta','articulos.stock','articulos.descripcion','articulos.condicion')
+        ->where('articulos.stock','>','0')
+        ->orderBy('articulos.nombre', 'desc')->get();
+
+        $count = Articulo::count();
+        return view('pdf.articulospdf',['articulos'=>$articulos,'cont'=>$count]);
+        $pdf = \PDF::loadView('pdf.articulospdf',['articulos'=>$articulos,'cont'=>$count]);
+
+        return $pdf->download('articulos.pdf');
+    }
+
     public function buscarArticulo(Request $request){
         if (!$request->ajax()) return redirect('/');
 

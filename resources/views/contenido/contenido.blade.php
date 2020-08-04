@@ -4,7 +4,7 @@
 @if(Auth::check())
     @if(Auth::user()->idrol==1)
     <template v-if="menu==0">
-        <h1>Escritorio</h1>
+        <dashboard-component></dashboard-component>
     </template>
     <template v-if="menu==1">
         <categoria-component></categoria-component>
@@ -31,10 +31,10 @@
         <rol-component></rol-component>
     </template>
     <template v-if="menu==9">
-        <h1>Reporte de Ingresos</h1>
+        <consulta-ingreso-component></consulta-ingreso-component>
     </template>
     <template v-if="menu==10">
-        <h1>Reporte de Ventas</h1>
+        <consulta-venta-component></consulta-venta-component>
     </template>
     <template v-if="menu==11">
         <h1>Ayuda</h1>
@@ -44,7 +44,7 @@
     </template>
     @elseif (Auth::user()->idrol==2)
         <template v-if="menu==0">
-            <h1>Escritorio</h1>
+            <dashboard-component></dashboard-component>
         </template>
        
         <template v-if="menu==5">
@@ -65,7 +65,7 @@
         </template>
     @elseif (Auth::user()->idrol==3)
         <template v-if="menu==0">
-            <h1>Escritorio</h1>
+            <dashboard-component></dashboard-component>
         </template>
         <template v-if="menu==1">
             <categoria-component></categoria-component>
@@ -80,10 +80,10 @@
             <proveedor-component></proveedor-component>
         </template>
         <template v-if="menu==9">
-            <h1>Reporte de Ingresos</h1>
+            <consulta-ingreso-component></consulta-ingreso-component>
         </template>
         <template v-if="menu==10">
-            <h1>Reporte de Ventas</h1>
+            <consulta-venta-component></consulta-venta-component>
         </template>
         <template v-if="menu==11">
             <h1>Ayuda</h1>
