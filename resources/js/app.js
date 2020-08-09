@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: Axios } = require('axios');
+const { default: Echo } = require('laravel-echo');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -30,6 +33,7 @@ Vue.component('venta-component', require('./components/Venta.vue').default);
 Vue.component('dashboard-component', require('./components/Dashboard.vue').default);
 Vue.component('consulta-ingreso-component', require('./components/ConsultaIngreso.vue').default);
 Vue.component('consulta-venta-component', require('./components/ConsultaVenta.vue').default);
+Vue.component('notification-component', require('./components/Notification.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,6 +44,23 @@ Vue.component('consulta-venta-component', require('./components/ConsultaVenta.vu
 const app = new Vue({
     el: '#app',
     data: {
-        menu: 0
+        menu: 0,
+        notifications: []
+    },
+    created() {
+        var me = this;
+        axios.post('notification/get').then(function(response) {
+                console.log(response.data);
+                var res = response.data;
+                me.notifications = res;
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        var userId = $('meta[name="userId"]').attr('content');
+        window.Echo.private('App.User.' + userId).notification((notification) => {
+            console.log(notification);
+            me.notifications.unshift(notification);
+        });
     }
 });

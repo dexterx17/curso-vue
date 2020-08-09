@@ -23,6 +23,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
     Route::get('/dashboard','DashboardController');
     Route::view('/main','contenido.contenido')->name('main');
+    Route::post('/notification/get','NotificationController@get');
     
     Route::group(['middleware'=>['Almacenero']],function(){
         

@@ -620,7 +620,6 @@
                 });
             },
             registrarIngreso(){
-                alert('reg');
                 if (this.validarIngreso()){
                     return;
                 }
